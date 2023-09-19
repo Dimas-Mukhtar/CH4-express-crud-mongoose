@@ -1,0 +1,19 @@
+{
+  "name": "node_express",
+  "version": "1.0.0",
+  "description": "ini perkenalan express js node js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [
+    "express",
+    "js"
+  ],
+  "author": "Dimas Mukhtar Yuliawan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
