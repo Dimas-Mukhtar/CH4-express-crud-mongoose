@@ -8,14 +8,16 @@ const {
     deleteToursById,
 } = require("../controllers/toursController")
 
-const checkId = require("../middleware/checkId")
-const checkBody = require("../middleware/checkBody")
-router.param("id", checkId)
+// const checkId = require("../middleware/checkId")
+// const checkBody = require("../middleware/checkBody")
+// router.param("id", checkId)
+
+router.route("/createModel").post(createTours)
 
 router
     .route("/")
     .get(getAllTours)
-    .post(checkBody, createTours)
+    .post(createTours)
 
 router
     .route("/:id")

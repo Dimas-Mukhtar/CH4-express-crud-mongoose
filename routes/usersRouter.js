@@ -3,7 +3,7 @@ const router = express.Router()
 const {
     getAllUsers,
     getUsersById,
-    createUsers,
+    createUser,
     editeUsersById,
     deleteUsersById,
 } = require("../controllers/usersController")
@@ -11,7 +11,7 @@ const {
 router
     .route("/")
     .get(getAllUsers)
-    .post(createUsers)
+    .post(createUser)
 
 router
     .route("/:id")
