@@ -3,11 +3,18 @@ const express = require("express")
 const morgan = require("morgan")
 const toursRouter = require("./routes/toursRouter")
 const usersRouter = require("./routes/usersRouter")
+const bodyParser = require("body-parser")
+const adminRouter = require("./routes/admin")
 const swaggerUi = require("swagger-ui-express")
 const fs = require("fs")
 const yaml = require("js-yaml")
 const app = express()
+app.use(bodyParser.urlencoded({ extended: true }))
+app.set("views", __dirname + "/views")
+app.set("view engine", "ejs")
 
+// app.set("view engine", "ejs")
+// app.set("views", "views")
 // middleware dari express
 // memodifikasi incoming body ke api kita
 app.use(express.json())
@@ -20,6 +27,7 @@ const swaggerDocument = yaml.load(
     )
 )
 
+// swagger api
 app.use(
     "/api/docs",
     swaggerUi.serve,
@@ -34,5 +42,6 @@ app.use((req, res, next) => {
 
 app.use("/api/v1/tours", toursRouter)
 app.use("/api/v1/users", usersRouter)
+app.use("/dashboard", adminRouter)
 
 module.exports = app

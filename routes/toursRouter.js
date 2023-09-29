@@ -12,7 +12,7 @@ const {
 // const checkBody = require("../middleware/checkBody")
 // router.param("id", checkId)
 
-router.route("/createModel").post(createTours)
+// router.route("/createModel").post(createTours)
 
 router
     .route("/")

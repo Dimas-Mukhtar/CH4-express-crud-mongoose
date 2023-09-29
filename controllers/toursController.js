@@ -180,7 +180,10 @@ const editeToursById = async (req, res) => {
             data: tour,
         })
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json({
+            status: "failed",
+            message: error.message,
+        })
     }
 }
 
