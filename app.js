@@ -1,10 +1,12 @@
 require("dotenv").config()
 const express = require("express")
 const morgan = require("morgan")
+const session = require("express-session")
+const flash = require("connect-flash")
+const bodyParser = require("body-parser")
 const toursRouter = require("./routes/toursRouter")
 const usersRouter = require("./routes/usersRouter")
-const bodyParser = require("body-parser")
-const adminRouter = require("./routes/admin")
+const adminRouter = require("./routes/adminRouter")
 const swaggerUi = require("swagger-ui-express")
 const fs = require("fs")
 const yaml = require("js-yaml")
@@ -39,6 +41,16 @@ app.use((req, res, next) => {
     req.requestTime = new Date().toString()
     next()
 })
+
+// flash and express session for notification
+app.use(
+    session({
+        secret: "geeksforgeeks",
+        saveUninitialized: true,
+        resave: true,
+    })
+)
+app.use(flash())
 
 app.use("/api/v1/tours", toursRouter)
 app.use("/api/v1/users", usersRouter)
